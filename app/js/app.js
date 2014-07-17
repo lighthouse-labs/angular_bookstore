@@ -14,6 +14,14 @@ app.config(['$httpProvider', function ($httpProvider) {
 	$httpProvider.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 }]);
 
+app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
+  $stateProvider
+    .state('stores', {
+        url: '/stores',
+        templateUrl: 'templates/stores.html',
+        controller: 'StoresCtrl'
+    });
+}]);
 
 /*================================================================
 =>                  bookstore App Run()  

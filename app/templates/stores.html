@@ -1,0 +1,12 @@
+<section class="stores" ng-controller="StoresCtrl">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-2">
+        <h3>{{stores.length}} Stores</h3>
+        <ul class="nav nav-pills nav-stacked">
+          <li ng-repeat="store in stores"><a href="#">{{store.name}}</a></li>
+        </ul>
+    </div>
+  </div>
+  </div>
+</section>

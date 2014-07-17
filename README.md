@@ -92,3 +92,85 @@ Now, we need to require the angular ui router plugin in the angular app.
 var app = angular.module('bookstore', ['ngResource', 'ngSanitize', 'ui.router']);
 ```
 
+# Step 3: Generate a controller
+
+We need to generate a stores controller that will list a bunch of bookstores.
+
+We can use the yeoman generator to do this.
+
+```
+yo boom:view stores -css
+   create app/templates/stores.html
+   invoke   boom:style
+   create     app/css/stores.css
+   invoke   boom:controller
+   create     app/js/controllers/stores.js
+```
+
+We also need to define a route for this new controller. When the user visits `http://localhost:9000/#/stores` we will display a list of stores.
+
+```js
+// app/js/app.js
+app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
+  $stateProvider
+    .state('stores', {
+        url: '/stores',
+        templateUrl: 'templates/stores.html',
+        controller: 'StoresCtrl'
+    });
+}]);
+```
+
+In order to make this route kick in we also need to tell angular where the template should be rendered. This is similar to the `yield` keyword in Rails layouts.
+
+```html
+  <body ng-app="bookstore">
+    <h1>Welcome to Boom Angular.js Generator!</h1>
+
+    <div ui-view></div> <!-- This tells ui.router where to render the template for the current route -->
+
+    <script type="text/javascript" src="bower/_bower.js"></script>
+    <script type="text/javascript" src="js/all.js"></script>
+    <!-- endbuild -->
+  </body>
+```
+
+Now, if you visit `http://localhost:9000/#/stores` you should see the console.log message from the StoresController.
+
+### Displaying some stores
+
+Let's add some sample data for the controller.
+
+```js
+// app/js/controllers/stores.js
+app.controller('StoresCtrl', ['$scope', function ($scope) {
+
+	'use strict';
+
+	console.log('Controller ===  StoresCtrl');
+
+  $scope.stores = [{id: 1, name: "Burnaby"}, {id: 2, name: "Vancouver"}, {id: 3, name: "Nanaimo"}]
+}]);
+```
+
+Whenever you attach an object or a function to `$scope` that data will be available in the view that belongs to the controller. This is similar to setting instance variables in actions in Rails.
+
+Let's display the store count on the page.
+
+```html
+<!-- app/templates/stores.html -->
+<section class="stores" ng-controller="StoresCtrl">
+  <h3>{{stores.length}} Stores</h3>
+</section>
+```
+And now we can use the `ng-repeat` keyword to iterate through every store and display its name on the page.
+
+```html
+<!-- app/templates/stores.html -->
+<section class="stores" ng-controller="StoresCtrl">
+  <h3>{{stores.length}} Stores</h3>
+  <ul>
+    <li ng-repeat="store in stores">{{store.name}}</li>
+  </ul>
+</section>
+```
