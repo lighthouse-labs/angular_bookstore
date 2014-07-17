@@ -308,3 +308,10 @@ The main goal of this app is to show you some of the angular dev tools (yeoman, 
 
 As a next step you can check out the videos at [http://egghead.io](http://egghead.io).
 
+## Resources
+
+http://yeoman.io/
+https://github.com/aamirshah/generator-boom
+https://github.com/angular-ui/ui-router
+http://lodash.com/docs#where
+
