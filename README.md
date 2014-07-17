@@ -91,4 +91,4 @@ Now, we need to require the angular ui router plugin in the angular app.
 // app/js/app.js
 var app = angular.module('bookstore', ['ngResource', 'ngSanitize', 'ui.router']);
 ```
-
+I strongly recommend that you use `ui.router` instead of the default `ngRoute`.
