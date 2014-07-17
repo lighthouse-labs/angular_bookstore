@@ -69,15 +69,3 @@ Now if you look at the app (localhost:9000) the font should look a lot better.
 
 Automagically, the bootstrap CSS files are loaded into `<link rel="stylesheet" href="bower/_bower.css">`
 
-## Generating controllers
-
-To generate the stores controller
-
-```
-yo boom:view stores -css
-   create app/templates/stores.html
-   invoke   boom:style
-   create     app/css/stores.css
-   invoke   boom:controller
-   create     app/js/controllers/stores.js
-```
