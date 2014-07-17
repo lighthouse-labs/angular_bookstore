@@ -174,3 +174,126 @@ And now we can use the `ng-repeat` keyword to iterate through every store and di
   </ul>
 </section>
 ```
+
+# Part 4: Books controller
+
+When the user clicks on a store we want to list the most popular books in that store.
+
+First, we'll need a books controller.
+
+```
+yo boom:view books -css
+```
+
+Then, we'll need to set up a new route so that `/stores/1/books` displays the books for store with id 1.
+
+```js
+//app/js/app.js
+app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
+  $stateProvider
+    .state('stores', {
+        url: '/stores',
+        templateUrl: 'templates/stores.html',
+        controller: 'StoresCtrl'
+    })
+    .state('stores.books', {
+        url: '/:store_id/books',
+        templateUrl: 'templates/books.html',
+        controller: 'BooksCtrl'
+    });
+}]);
+```
+
+Set up the proper `href` links in the stores view and add `ui-view` to tell ui.router where to render the books.html template.
+
+```html
+<!-- app/templates/stores.html -->
+<section class="stores" ng-controller="StoresCtrl">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-2">
+        <h3>{{stores.length}} Stores</h3>
+        <ul class="nav nav-pills nav-stacked">
+          <!-- add the store id in the route -->
+          <li ng-repeat="store in stores"><a href="#/stores/{{store.id}}/books">{{store.name}}</a></li>
+        </ul>
+      </div>
+      <div class="col-md-10">
+        <!-- need to add this to tell angular where to render the child view books.html-->
+        <div ui-view></div>
+      </div>
+    </div>
+  </div>
+  </div>
+</section>
+```
+
+Add some dummy book data in the controller. This is not the best place to put it, but we'll leave it here for now.
+
+```
+// app/js/controllers/books.js
+app.controller('BooksCtrl', ['$scope', '$stateParams', function ($scope, $stateParams) {
+
+  'use strict';
+
+  console.log('Controller ===  BooksCtrl');
+
+  // Using $stateParams we can access url params
+  console.log('The store id is', $stateParams.store_id);
+
+  // Hardcode $scope.books. This data could just as easily have come from an API though...
+  $scope.stores = [
+    // dummy data goes here.
+  ]
+
+  // use lodash to retrieve the books for the current store
+  $scope.store = _($scope.stores).where({'id': parseInt($stateParams.store_id)}).first();
+  $scope.books = $scope.store.books || [];
+}]);
+```
+
+Need to add lodash to the bower requirements to be able to use the `_($scope.stores).where()` method to search through the javascript objects.
+
+```
+// bower.json
+{
+  "name": "bookstore",
+  "version": "0.0.0",
+  "dependencies": {
+    "angular": "1.2.6",
+    "angular-resource": "1.2.6",
+    "angular-sanitize": "1.2.6",
+    "angular-ui-router": "0.2.10",
+    "bootstrap": "3.2.0",
+    "jquery": "*",
+    "lodash": "2.4.1"   // <--- added this
+  },
+  "devDependencies": {
+    "angular-mocks": "1.2.6",
+    "angular-scenario": "1.2.6"
+  },
+  "overrides": {
+
+  }
+}
+
+```
+
+Add the template html to display the books.
+
+
+```html
+<!-- app/templates/books.html -->
+<section class="books" ng-controller="BooksCtrl">
+  <h2>{{store.name}} Store</h2>
+  <div class="panel panel-default" ng-repeat="book in books">
+    <div class="panel-heading">
+      <h3 class="panel-title">{{book.title}}</h3>
+    </div>
+    <div class="panel-body">
+      {{book.description}}
+    </div>
+  </div>
+</section>
+```
+

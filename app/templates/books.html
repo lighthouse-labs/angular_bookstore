@@ -1,0 +1,11 @@
+<section class="books" ng-controller="BooksCtrl">
+  <h2>{{store.name}} Store</h2>
+  <div class="panel panel-default" ng-repeat="book in books">
+    <div class="panel-heading">
+      <h3 class="panel-title">{{book.title}}</h3>
+    </div>
+    <div class="panel-body">
+      {{book.description}}
+    </div>
+  </div>
+</section>

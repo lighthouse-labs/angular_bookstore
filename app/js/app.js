@@ -20,6 +20,11 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
         url: '/stores',
         templateUrl: 'templates/stores.html',
         controller: 'StoresCtrl'
+    })
+    .state('stores.books', {
+        url: '/:store_id/books',
+        templateUrl: 'templates/books.html',
+        controller: 'BooksCtrl'
     });
 }]);
 
