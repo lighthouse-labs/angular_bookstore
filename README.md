@@ -69,3 +69,26 @@ Now if you look at the app (localhost:9000) the font should look a lot better.
 
 Automagically, the bootstrap CSS files are loaded into `<link rel="stylesheet" href="bower/_bower.css">`
 
+## Install ui-router
+
+This is an angular module that makes it easy to work with routes for client side web applications where application state is important.
+
+Add this in `bower.json`
+
+```
+    "angular-ui-router": "0.2.10",
+```
+
+And run bower install to download and install the plugin.
+
+```
+bower install
+```
+
+Now, we need to require the angular ui router plugin in the angular app.
+
+```js
+// app/js/app.js
+var app = angular.module('bookstore', ['ngResource', 'ngSanitize', 'ui.router']);
+```
+

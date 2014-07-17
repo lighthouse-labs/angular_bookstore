@@ -4,7 +4,7 @@
 ==================================================================*/
 /*global angular*/
 
-var app = angular.module('bookstore', ['ngResource', 'ngSanitize']);
+var app = angular.module('bookstore', ['ngResource', 'ngSanitize', 'ui.router']);
 
 
 app.config(['$httpProvider', function ($httpProvider) {
