@@ -299,3 +299,12 @@ Add the template html to display the books.
 
 # Step 5: Extract the dummy data into a service
 
+
+# Fin.
+
+This is just a simple demo that barely scratches the surface of what angular can do.
+
+The main goal of this app is to show you some of the angular dev tools (yeoman, gulp, livereload) and show you how to get started with angular.
+
+As a next step you can check out the videos at [http://egghead.io](http://egghead.io).
+
