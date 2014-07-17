@@ -8,15 +8,27 @@ Example app for Angular.
 This is an Angular.js App and was generated with Yeoman and the [Boom Angular Generator](https://npmjs.org/package/generator-boom)
 
 ```
-    gulp bs
+    gulp
 ```
 
+## Getting Started
+
+Make sure you have the gulp cli installed.
+
+```
+npm install -g gulp
+```
+Start the server that hosts the angular app in development.
+
+```
+gulp
+```
 ### Troubleshooting
 
 If you see this error message when starting `gulp bs`:
 
 ```
-$ gulp bs
+$ gulp
 [00:00:09] Using gulpfile /Users/monica/Code/lighthouse/week7/bookstore/gulpfile.js
 [00:00:09] Starting 'bs'...
 [00:00:09] Finished 'bs' after 2.46 ms
@@ -35,15 +47,3 @@ To fix this you need to upgrade the `browser-sync` package to at least 0.7.7  To
     "browser-sync": "~0.7.7",
 ```
 
-## Getting Started
-
-Make sure you have the gulp cli installed.
-
-```
-npm install -g gulp
-```
-Start the server that hosts the angular app in development.
-
-```
-gulp bs
-```
