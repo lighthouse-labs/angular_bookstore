@@ -297,3 +297,5 @@ Add the template html to display the books.
 </section>
 ```
 
+# Step 5: Extract the dummy data into a service
+
