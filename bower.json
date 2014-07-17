@@ -5,6 +5,7 @@
     "angular": "1.2.6",
     "angular-resource": "1.2.6",
     "angular-sanitize": "1.2.6",
+    "bootstrap": "3.2.0",
     "jquery": "*"
   },
   "devDependencies": {

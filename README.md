@@ -47,3 +47,37 @@ To fix this you need to upgrade the `browser-sync` package to at least 0.7.7  To
     "browser-sync": "~0.7.7",
 ```
 
+# Step 2: Add Bootstrap to the project
+
+We could add a `<link>` tag in index.html to require bootstrap from the CDN, but instead it's better to manage browser library requirements through bower.
+
+Add this line to bower.json
+
+```
+    "bootstrap": "3.2.0",
+```
+
+Then run
+
+```
+bower install
+```
+
+This downloads bootstrap into your app's `bower_components` folder. 
+
+Now if you look at the app (localhost:9000) the font should look a lot better.
+
+Automagically, the bootstrap CSS files are loaded into `<link rel="stylesheet" href="bower/_bower.css">`
+
+## Generating controllers
+
+To generate the stores controller
+
+```
+yo boom:view stores -css
+   create app/templates/stores.html
+   invoke   boom:style
+   create     app/css/stores.css
+   invoke   boom:controller
+   create     app/js/controllers/stores.js
+```
