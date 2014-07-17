@@ -311,7 +311,10 @@ As a next step you can check out the videos at [http://egghead.io](http://egghea
 ## Resources
 
 http://yeoman.io/
+
 https://github.com/aamirshah/generator-boom
+
 https://github.com/angular-ui/ui-router
+
 http://lodash.com/docs#where
 
